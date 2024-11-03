@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./_components/Header";
 import SideNav from "./_components/SideNav";
 
@@ -10,7 +9,7 @@ export default function DashboardLayout({ children }) {
       </div>
       <div>
         <Header />
-        <div className="md:ml-64">{children}</div>
+        <div className="md:ml-64 p-10">{children}</div>
       </div>
     </div>
   );
