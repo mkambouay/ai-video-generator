@@ -1,6 +1,6 @@
 # This is a AI shortform video generator.
 
-Tech stack: React, NextJS, tailwindcss, clerk, drizzle, Neon.
+Tech stack: React, NextJS, tailwindcss, clerk, drizzle with Neon, Lucide icons.
 
 ## Getting Started
 
