@@ -1,6 +1,6 @@
 # This is a AI shortform video generator.
 
-Tech stack: React, NextJS, tailwindcss, clerk, drizzle with Neon, Lucide icons, Gemini AI, Axios.
+Tech stack: React, NextJS, tailwindcss, clerk, drizzle with Neon, Lucide icons, Gemini AI, Axios http, Google text-to-spech api.
 
 ## Getting Started
 

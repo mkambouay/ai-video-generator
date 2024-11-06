@@ -6,6 +6,7 @@ import SelectDuration from "./_components/SelectDuration";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import CustomLoading from "./_components/CustomLoading";
+const { v4: uuidv4 } = require("uuid");
 
 export default function CreateNew() {
 	const [formData, setFormData] = useState([]);
@@ -36,14 +37,35 @@ export default function CreateNew() {
 			formData.imageStyle +
 			" format for each scene and give me result in JSON format with imagePrompt and ContentText as field";
 		console.log(prompt);
+
 		const result = await axios
 			.post("/api/get-video-script", {
 				prompt: prompt,
 			})
 			.then((resp) => {
-				console.log(resp.data.result);
 				setVideoScript(resp.data.result);
+				GenerateAudioFile(resp.data.result);
 			});
+	};
+
+	const GenerateAudioFile = async (videoScriptData) => {
+		setLoading(true);
+		let script = "";
+		const id = uuidv4();
+		videoScriptData.forEach((item) => {
+			script = script + item.ContentText + " ";
+		});
+
+		await axios
+			.post("/api/generate-audio", {
+				text: script,
+				id: id,
+			})
+			.then((resp) => {
+				console.log(resp.data);
+			});
+
+		console.log(script);
 		setLoading(false);
 	};
 

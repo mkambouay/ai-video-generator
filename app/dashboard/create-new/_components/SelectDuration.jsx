@@ -9,7 +9,7 @@ import React, { useState } from "react";
 
 export default function SelectDuration({ onUserSelect }) {
 	const [selectedOption, setSelectedOption] = useState();
-	const options = ["30 seconds", "60 seconds", "90 seconds"];
+	const options = ["30~ seconds", "60~ seconds", "90~ seconds"];
 	return (
 		<div className='mt-7'>
 			<h2 className='font-bold text-2xl text-primary'>Duration</h2>
