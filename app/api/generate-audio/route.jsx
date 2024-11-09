@@ -34,5 +34,5 @@ export async function POST(req) {
 	const downloadUrl = await getDownloadURL(storageRef);
 	console.log("Audio content written to file: output.mp3");
 
-	return NextResponse.json({ Result: "Success" });
+	return NextResponse.json({ result: downloadUrl });
 }

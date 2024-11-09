@@ -12,6 +12,8 @@ export default function CreateNew() {
 	const [formData, setFormData] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [videoScript, setVideoScript] = useState([]);
+	const [audioFileUrl, setAudioFileUrl] = useState();
+	const [captions, setCaptions] = useState();
 
 	const onHandleInputChange = (fieldName, fieldValue) => {
 		console.log(fieldName, fieldValue);
@@ -26,6 +28,7 @@ export default function CreateNew() {
 		GetVideoScript();
 	};
 
+	//Create video script
 	const GetVideoScript = async () => {
 		setLoading(true);
 		const prompt =
@@ -48,8 +51,8 @@ export default function CreateNew() {
 			});
 	};
 
+	//Create audio file mp3
 	const GenerateAudioFile = async (videoScriptData) => {
-		setLoading(true);
 		let script = "";
 		const id = uuidv4();
 		videoScriptData.forEach((item) => {
@@ -62,10 +65,25 @@ export default function CreateNew() {
 				id: id,
 			})
 			.then((resp) => {
-				console.log(resp.data);
+				setAudioFileUrl(resp.data.result);
+				GenerateSubtitles(resp.data.result);
 			});
 
 		console.log(script);
+	};
+
+	const GenerateSubtitles = async (fileUrl) => {
+		setLoading(true);
+
+		await axios
+			.post("/api/generate-caption", {
+				audioFileUrl: fileUrl,
+			})
+			.then((resp) => {
+				setCaptions(resp.data.result);
+				console.log(resp?.data?.result);
+			});
+
 		setLoading(false);
 	};
 
