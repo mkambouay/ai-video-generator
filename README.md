@@ -32,6 +32,9 @@ FIREBASE_API_KEY=
 
 ASSEMBLYAI_API_KEY=
 
+# Replicate token, register, login, and input billing info, the model the app is working with it costs 0.0019$/image generation so 526 for 1$
+REPLICATE_API_TOKEN=
+
 #All of the api keys are avaliable for free, some services demand credit card set up for billing info, but if you dont excet a limit of X GB of api request dont have to worry, usualy it has millions of free request before it's paid.
 
 ```
